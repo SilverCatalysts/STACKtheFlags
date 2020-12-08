@@ -9,7 +9,7 @@ The provided file is a 5-second audio recording. There is no identifiable speech
 
 Running the file through an audio spectrum analyzer, we can get the following frequency response for the file:
 
-![](https://www.evernote.com/shard/s731/res/876853ca-5d3a-f71e-d04c-e08cbc525bc7)
+![alt text](./spectrogram.png)
 
 The frequency response reveals the following string:
 
