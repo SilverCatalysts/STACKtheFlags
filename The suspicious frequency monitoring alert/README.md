@@ -22,7 +22,7 @@ This will look for all the occurances of **TP-Link_1491_0** as well as the trans
 
 We get
 
-![parts] (./parts.png)
+![sections] (./parts.png)
 
 Alternatively, noticing that the first part of the flag starts with **1:**, we can find the remaining parts by grepping **2:**, **3:** and **4:**.
 
