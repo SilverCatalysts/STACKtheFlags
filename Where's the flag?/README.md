@@ -1,11 +1,13 @@
-# Voices in the Head
+# Where's the flag?
 
 ### Description
-**_We found a voice recording in one of the forensic images but we have no clue what's the voice recording about. Are you able to help?_**
+**_There's plenty of space to hide flags in our spacious office. Let's see if you can find it!_**
 
 ### Solution
 
-The provided file is a 5-second audio recording. There is no identifiable speech or musical elements to the file.
+There is a png file provided that shows a photo of the GovTech. With any Stego challenge, it is usually a good idea to run file and strings on the target file. 
+
+<img src="screenshot1.png">
 
 Running the file through an audio spectrum analyzer, we can get the following frequency response for the file:
 
