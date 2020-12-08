@@ -50,7 +50,11 @@ Installing *Xiao Steganography*, we used it to decrypt the given audio file. The
 
 In the ZIP file contained a Microsoft Word document **This is it.docx**. However, the ZIP file was locked, and none of the previously found strings were able to unlock it.
 
-#Perlyn pls insert string#
+To see if there was any additional information hidden in the file to allow us to unlock it, we stringed the zip file ```strings theflag.zip```, which gave us a fake flag **govtech-csg{Th1sisn0ty3tthefl@g}**.
+
+![alt text](./stringed.png)
+
+Following the logic from before, this could likely be the password to unlock the zip file.
 
 Opening the Word Document with **govtech-csg{Th1sisn0ty3tthefl@g}** gave us the flag for the challenge: **govtech-csg{3uph0n1ou5_@ud10_ch@ll3ng3}** and two hints for Forensic Challenge 3.
 
