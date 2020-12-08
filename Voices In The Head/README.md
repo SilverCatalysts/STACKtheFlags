@@ -32,8 +32,6 @@ This was likely set up by the organisers of the CTF to be a wild goose chase, so
 
 We tried to run the audio file through other high definition spectrogram generators to investigate the horizontal blip at the bottom of the original image, but it was to no avail.
 
-![](https://www.evernote.com/shard/s731/res/c74f6719-75eb-4cfa-2f51-f985ee03c331)
-
 It was easy to get strongly attached to the spectrogram, as it seemed that audio files had most of their information stored in the frequency response.
 
 On the last day of the competition, the organisers offered a free hint to this problem:
@@ -44,7 +42,7 @@ As CTF's generally like to use obscure software to hide flags, we immediately ch
 
 As we had hoped, we quickly found the following page [https://resources.infosecinstitute.com/topic/steganography-and-tools-to-perform-steganography/](https://resources.infosecinstitute.com/topic/steganography-and-tools-to-perform-steganography/) which informed us about Xiao Steganography.
 
-![](https://www.evernote.com/shard/s731/res/d68ce567-0f56-4e15-4f89-7fd2c9db6ddd)
+![xiao](./xiao.jpeg)
 
 Installing *Xiao Steganography*, we used it to decrypt the given audio file. The decryption revealed a ZIP file hidden in the audio file, but it required a password to be completely decrypted. Turns out, the wild goose chase from earlier was not for naught. Using **thisisnottheflag** from the earlier part of the challenge, we extracted the ZIP file from the audio.
 
