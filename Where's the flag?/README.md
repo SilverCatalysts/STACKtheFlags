@@ -27,8 +27,12 @@ Bingo, the decodes data contains the PNG header. We save it as a PNG file and fi
 <img src="flag.png">
 
 After running the usual commands on the new png file, we don't find anything interesting. We uploaded the PNG file to [StegOnline](https://stegonline.georgeom.net/), a useful online stego tool for images. The tool finds a custom bitmap that the image used. A bitmap is something like a colour palette that the pictures uses. The same RGB values can be used for different "colours" on the bitmap but will show up as exactly the same colour on a screen. 
+
 <img src="screenshot4.PNG">
-We can either randomize the bitmap which will show any hidden information or we can browse the bitmap to see where the pixels of each colour is. We ge tthe flag hidden on the flag pole, **govtech-csg{f1agcepti0N}**.
+
+We can either randomize the bitmap which will show any hidden information or we can browse the bitmap to see where the pixels of each colour is. We get the flag hidden on the flag pole, **govtech-csg{f1agcepti0N}**.
+
+<img src="newflag.png">
 
 ### Reflection
 Initially we thought that the PNG file was artifically resized to hide pixels as the description seems to hint that the file dimensions is bigger than actual. However, after uploading to [FotoForensics](https://fotoforensics.com/), we didn't find any hidden pixels. 
