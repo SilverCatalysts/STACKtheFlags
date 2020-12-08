@@ -7,7 +7,7 @@
 
 There is a png file provided that shows a photo of the GovTech. With any Stego challenge, it is usually a good idea to run file and strings on the target file. 
 
-<img src="screenshot1.png">
+<img src="screenshot1.PNG">
 
 Running the file through an audio spectrum analyzer, we can get the following frequency response for the file:
 
