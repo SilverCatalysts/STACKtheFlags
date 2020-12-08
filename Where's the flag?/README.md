@@ -1,59 +1,46 @@
-# Voices in the Head
+# Where's the flag?
 
 ### Description
-**_We found a voice recording in one of the forensic images but we have no clue what's the voice recording about. Are you able to help?_**
+**_There's plenty of space to hide flags in our spacious office. Let's see if you can find it!_**
 
 ### Solution
 
-The provided file is a 5-second audio recording. There is no identifiable speech or musical elements to the file.
+There is a PNG file provided that shows a photo of the GovTech cafeteria. 
 
-Running the file through an audio spectrum analyzer, we can get the following frequency response for the file:
+<img src="misc-challenge-7.png">
 
-![alt text](./spectrogram.png)
+With any Stego challenge, it is usually a good idea to run **file** and **strings** on the target file. 
 
-The frequency response reveals the following string:
+<img src="screenshot1.PNG">
 
-**aHR0cHM6Ly9wYXN0ZWJpbi**
-**5jb20vakVUajJ1VWI=**
+We don't get anything interesting from the results. Next, we ran **pngcheck** on the file, which checks for the integrity of PNG data chunks.
 
-The distribution of characters seems to hint at a base-64 encryption. As expected, decoding the string in base-64 gives the following URL:
+<img src="screenshot2.PNG">
 
-[***https://pastebin.com/jETj2uUb***](https://pastebin.com/jETj2uUb)
+Hmmm, we get an error saying that the zTXt keyword is longer than the limit. zTXt chunks are generally used for conveying textual information about the image which might contain the flag. We can extract the zTXt chunk through a hex editor or by uploading it to an online extractor like [dcode](https://www.dcode.fr/png-chunks).
 
-The pastebin link gives another string of special characters:
+The extracted data resembles Base64 encoded data. We upload it to [CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)) to decode it.
 
-**++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>>++++++++++++++++.------------.+.++++++++++.----------.++++++++++.-----.+.+++++..------------.---.+.++++++.-----------.++++++.**
+<img src="screenshot3.PNG">
+Bingo, the decodes data contains the PNG header. We save it as a PNG file and find that it contains a picture of an actual flag.
 
-There is an esoteric programming language known as **Brainfuck** which uses the eight commands "+", "-", "<", ">", "[", "]", "." and ",". Using online **Brainfuck** interpreters to decode the given string, we finally arrive at the *exciting* sequence of ASCII characters:
+<img src="flag.png">
 
-**thisisnottheflag**
+After running the usual commands on the new png file, we don't find anything interesting. We uploaded the PNG file to [StegOnline](https://stegonline.georgeom.net/), a useful online stego tool for images. The tool finds a custom bitmap that the image used. A bitmap is something like a colour palette that the pictures uses. The same RGB values can be used for different "colours" on the bitmap but will show up as exactly the same colour on a screen. 
 
-This was likely set up by the organisers of the CTF to be a wild goose chase, so our team had to take a step back and analyse the situation to see where the true flag might be hidden.
+<img src="screenshot4.PNG">
 
-We tried to run the audio file through other high definition spectrogram generators to investigate the horizontal blip at the bottom of the original image, but it was to no avail.
+We can either randomize the bitmap which will show any hidden information or we can browse the bitmap to see where the pixels of each colour is. We get the flag hidden on the flag pole, **govtech-csg{f1agcepti0N}**.
 
-It was easy to get strongly attached to the spectrogram, as it seemed that audio files had most of their information stored in the frequency response.
+<img src="newflag.png">
 
-On the last day of the competition, the organisers offered a free hint to this problem:
+### Reflection
+Initially we thought that the PNG file was artifically resized to hide pixels as the description seems to hint that the file dimensions is bigger than actual. However, after uploading to [FotoForensics](https://fotoforensics.com/), we didn't find any hidden pixels. 
 
-_**Xiao wants to help. Will you let him help you?**_
+After running strings on the inital PNG file, there was a long base 64 encoded string that could be decoded if we discard the header "zTXt". 
 
-As CTF's generally like to use obscure software to hide flags, we immediately checked online for any audio-related software named or related to "Xiao".
+Having a set of offline and online tools to use on stego challenges will help in case you miss out anything during the competition.
 
-As we had hoped, we quickly found the following page [https://resources.infosecinstitute.com/topic/steganography-and-tools-to-perform-steganography/](https://resources.infosecinstitute.com/topic/steganography-and-tools-to-perform-steganography/) which informed us about Xiao Steganography.
 
-![xiao](./xiao.jpeg)
-
-Installing *Xiao Steganography*, we used it to decrypt the given audio file. The decryption revealed a ZIP file hidden in the audio file, but it required a password to be completely decrypted. Turns out, the wild goose chase from earlier was not for naught. Using **thisisnottheflag** from the earlier part of the challenge, we extracted the ZIP file from the audio.
-
-In the ZIP file contained a Microsoft Word document **This is it.docx**. However, the ZIP file was locked, and none of the previously found strings were able to unlock it.
-
-To see if there was any additional information hidden in the file to allow us to unlock it, we stringed the zip file ```strings theflag.zip```, which gave us a fake flag **govtech-csg{Th1sisn0ty3tthefl@g}**.
-
-![alt text](./stringed.png)
-
-Following the logic from before, this could likely be the password to unlock the zip file.
-
-Opening the Word Document with **govtech-csg{Th1sisn0ty3tthefl@g}** gave us the flag for the challenge: **govtech-csg{3uph0n1ou5_@ud10_ch@ll3ng3}** and two hints for Forensic Challenge 3.
 
 
