@@ -12,7 +12,7 @@ Now, looking through ```frequency.txt```, we see many wifi names as well as the 
 
 However, for one wifi, we notice a base64 string being transmitted.
 
-![sus] (./sus.png)
+![sus](/sus.png?raw=true "Suspicious Frequency")
 
 Decoding the string **Z292dGVjaC1j**, we see that it decodes to **govtech-c**, which represents the start of the flag.
 
@@ -22,7 +22,7 @@ This will look for all the occurances of **TP-Link_1491_0** as well as the trans
 
 We get
 
-![sections] (./parts.png)
+![parts](/parts.png?raw=true "Parts of the flag")
 
 Alternatively, noticing that the first part of the flag starts with **1:**, we can find the remaining parts by grepping **2:**, **3:** and **4:**.
 
