@@ -3,7 +3,7 @@
 ## Description
 We received an alert from our smart city’s frequency monitoring and noticed some anomalies. Figure out what is happening
 
-## Solving
+## Solution
 The challenge involved a pcap file, which essentially captures live network packet data. Given the title of the problem, we know to look out for any suspicious data transmitted.
 
 To view the data, we ran ```strings iot-challenge-2.pcap > frequency.txt```.
